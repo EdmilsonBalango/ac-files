@@ -3,6 +3,7 @@ import {ThemeProvider} from 'styled-components';
 import { darkTheme, lightTheme } from './themes';
 import {GlobalStyles} from './global/styles'
 import Board from './components/board';
+import { BrowserRouter } from 'react-router-dom';
 
 
 
@@ -17,7 +18,9 @@ function App() {
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles />
-      <Board />
+      <BrowserRouter>
+        <Board />
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

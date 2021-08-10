@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
     body{
@@ -12,3 +12,11 @@ export const GlobalStyles = createGlobalStyle`
         outline: none;
     }
 `;
+
+export const GlobalShiftsContainer = styled.div`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`

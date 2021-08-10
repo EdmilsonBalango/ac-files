@@ -17,11 +17,9 @@ export const Container = styled.div`
        grid-area: m;
    }
    aside{
-       border-right: 1px solid #f4f4f4;
-       
-       div{
+        border-right: 1px solid #f4f4f4;
         display: flex;
-        margin: auto;
-       }
+        justify-content: center;
+        /* align-items: center; */
    }
 `
