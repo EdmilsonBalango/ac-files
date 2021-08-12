@@ -6,10 +6,14 @@ import { Container } from './style'
 
 
 const Upload = () => {
+    const handleUpload = (files) =>{
+        return 'ola'
+    }
+
     return(
         <GlobalShiftsContainer>
             <Container>
-                <UploadService />
+                <UploadService onUpload={handleUpload()}/>
             </Container>
         </GlobalShiftsContainer>
     )

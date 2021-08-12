@@ -9,7 +9,7 @@ import { Container } from './style';
 export default class Board extends Component {
   render() {
     return (
-        <Container>
+        <Container onContextMenu={event => event.preventDefault()}>
           {/* <Router> */}
             <header>
               <Header />
@@ -19,7 +19,7 @@ export default class Board extends Component {
             </aside>            
             <main>
               <Switch>
-                <Route exact path={"/"} component={Upload}/>
+                <Route exact path={"/"} component={Upload }/>
                 <Route path={'/explore'} component={Explore} />
               </Switch>
             </main>
