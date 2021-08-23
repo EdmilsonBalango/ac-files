@@ -1,11 +1,11 @@
 import React, { Component, useState } from 'react';
 import { Container, Logo, Profile, SearchBar, MyPic, Filter, ListFilter } from '../header/style';
 import logo from '../../assets/images/logo.png'
-import user from '../../assets/images/user.jpg'
-import docs from '../../assets/images/svg/docs.svg'
-import sheet from '../../assets/images/svg/sheets.svg'
-import pdf from '../../assets/images/svg/pdf.svg'
-import txt from '../../assets/images/svg/txt.svg'
+// import user from '../../assets/images/user.jpg'
+// import docs from '../../assets/images/svg/docs.svg'
+// import sheet from '../../assets/images/svg/sheets.svg'
+// import pdf from '../../assets/images/svg/pdf.svg'
+// import txt from '../../assets/images/svg/txt.svg'
 
 
 

@@ -17,12 +17,6 @@ export const Container = styled.div`
     } */
         
 `
-export const Toolbar = styled.div`
-    height: 5vh;
-    width: 100%;
-    border-bottom: 1px solid #f1f1f1;
-    /* padding: 5px; */
-`
 
 export const RightMenu = styled.div`
 
@@ -49,6 +43,9 @@ export const RightMenu = styled.div`
         :hover{
             background-color: rgba(0,0,0,.03);
         }
+    }
+    a{
+        text-decoration: none;
     }
 `
 
@@ -83,5 +80,37 @@ export const Folder = styled.button`
         font-size: 9pt;
     }
 
+`
+export const File = styled.button`
+    margin: 20px;
+    border: 1px solid #000;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: rgba(0,0,0,.03);
+    :hover{
+        cursor: pointer;
+        background-color: rgba(0,0,0,.08);
+    }
+
+    strong{
+        color: rgba(0,0,0,.8);
+        font-size: 9pt;
+    }
+
+`
+
+export const KindFile =  styled.img`
+    height: 80px;
+    width: 80px;
+    padding: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 `
 

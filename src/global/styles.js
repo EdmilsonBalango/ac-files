@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-
+import 'react-circular-progressbar/dist/styles.css'
 export const GlobalStyles = createGlobalStyle`
     body{
         background-color: ${props => props.theme.body};

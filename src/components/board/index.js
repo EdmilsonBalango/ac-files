@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch, Router } from 'react-router-dom';
 import Explore from '../../pages/explorer';
+import InnerBag from '../../pages/innerBag';
 import Upload from '../../pages/upload';
 import Header from '../header';
 import Navigator from '../navigation';
@@ -21,6 +22,7 @@ export default class Board extends Component {
               <Switch>
                 <Route exact path={"/"} component={Upload }/>
                 <Route path={'/explore'} component={Explore} />
+                <Route path={'/folder'} component={InnerBag} />
               </Switch>
             </main>
           {/* </Router> */}

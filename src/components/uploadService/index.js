@@ -1,12 +1,12 @@
-import React  from "react";
+import React, {Component}  from "react";
 import Dropzone from "react-dropzone";
 import { DropContainer,DropMessage, FileList } from "./style";
 
 
 
-const UploadService =({onUpload})=> {
+export default class UploadService extends Component {
     
-    const renderMessage =(isDragReject, isDragActive) =>{
+     renderMessage =(isDragReject, isDragActive) =>{
         if(!isDragActive){
             return <DropMessage>Clique ou Arraste para fazer upload de seus arquivos</DropMessage>
         }
@@ -16,9 +16,11 @@ const UploadService =({onUpload})=> {
         return <DropMessage status="success">Solte seu arquivos</DropMessage>
     }
     
+    render(){
+        const {onUpload} = this.props
     return(
         <>
-            <Dropzone accept="image/*" onDropAccepted={()=>onUpload}>
+            <Dropzone accept="application/*" onDropAccepted={onUpload}>
                 {({ getRootProps, getInputProps, isDragActive, isDragReject})=>(
                     <DropContainer
                         {...getRootProps({className: 'dropzone'})}
@@ -26,7 +28,7 @@ const UploadService =({onUpload})=> {
                         isDragReject={isDragReject}
                     >
                         <input {...getInputProps()} />
-                        {renderMessage(isDragReject, isDragActive)}
+                        {this.renderMessage(isDragReject, isDragActive)}
                     </DropContainer>
                 )}
             </Dropzone>
@@ -35,9 +37,10 @@ const UploadService =({onUpload})=> {
 
     )
 }
+}
 
 
-export default  UploadService
+// export default  UploadService
 
 
 

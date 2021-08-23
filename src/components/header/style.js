@@ -9,7 +9,12 @@ export const Container = styled.div`
 
 `
 export const Logo = styled.img`
-    width: 60px;
+    /* background-image: url(${props => props.logoImage}); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 40px;
 `
 
 export const SearchBar = styled.div`
@@ -48,9 +53,9 @@ export const SearchBar = styled.div`
 export const Filter = styled.div`
     position: absolute;
     width: 40vw;
-    /* margin: auto; */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     min-height: 200px;
-    background-color: aliceblue;
+    background-color: #fff;
     border-radius: 10px;
     padding: 10px;
     top: 7vh;
