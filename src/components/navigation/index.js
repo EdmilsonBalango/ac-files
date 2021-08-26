@@ -16,7 +16,7 @@ const Navigator =()=>{
             </NavButton>
             </Link>
 
-            <Link to='/explore'>
+            <Link to='/explore/1'>
             <NavButton>
             <svg x="0px" y="0px" height="24px" width="24px" focusable="false" viewBox="0 0 24 24" fill="#6f6f6f"><g><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"></path><path d="M0 0h24v24H0z" fill="none"></path></g></svg>
             Arquivos

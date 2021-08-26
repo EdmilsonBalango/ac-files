@@ -21,7 +21,7 @@ export default class Board extends Component {
             <main>
               <Switch>
                 <Route exact path={"/"} component={Upload }/>
-                <Route path={'/explore'} component={Explore} />
+                <Route path={'/explore/:ids'} component={Explore} />
                 <Route path={'/folder'} component={InnerBag} />
               </Switch>
             </main>
