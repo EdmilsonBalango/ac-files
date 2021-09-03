@@ -8,7 +8,7 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: row;
     /* background-color: '#fff'; */
-    position: relative;
+    /* position: absolute; */
         button{
             border: none;
             margin: 0 10px;
@@ -16,6 +16,8 @@ export const Container = styled.div`
             color: rgba(0,0,0,.5);
             padding: 5px;
             border-radius: 5px;
+            display: flex;
+            align-items: center;
 
                 :hover{
                     color: rgba(0,0,0,.6);
@@ -25,6 +27,7 @@ export const Container = styled.div`
 `
 
 export const NewBagName = styled.div`
+    clear: both;
     height: 50px;
     min-width: 400px;
     background-color: #fff;
@@ -38,6 +41,7 @@ export const NewBagName = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 0 5px;
+    z-index: 1000;
 
     input{
         outline: none;
@@ -68,6 +72,9 @@ export const ActionButtons = styled.button`
     padding: 10px;
     font-weight: bold;
     width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     :hover{
         background-color: rgba(0,0,0,.05);

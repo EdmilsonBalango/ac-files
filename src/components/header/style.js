@@ -22,6 +22,7 @@ export const SearchBar = styled.div`
     height: 50px;
     background-color: '#444';
     border-radius: 10px;
+    /* position: relative; */
 
     input{
         height: 100%;
@@ -52,7 +53,7 @@ export const SearchBar = styled.div`
 
 export const Filter = styled.div`
     position: absolute;
-    width: 40vw;
+    width: 50vw;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     min-height: 200px;
     background-color: #fff;

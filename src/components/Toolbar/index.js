@@ -1,9 +1,14 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import {MdDelete, MdCreateNewFolder} from 'react-icons/md'
+import { MdCreateNewFolder} from 'react-icons/md'
+import { withRouter } from 'react-router-dom';
+import { BiArrowBack } from 'react-icons/bi'
 import { Container, NewBagName,ActionButtons} from "./style";
 
-export default class componentName extends Component {
+
+
+
+class Toolbar extends Component {
     constructor(props){
         super(props);
         this.state = {value: '', createBag: false}
@@ -18,21 +23,42 @@ export default class componentName extends Component {
     async handleSubmit(event){
         event.preventDefault()
         const {current} = this.props
+        let bagName = this.state.value.trim()
+
+        function treathName(){
+            if(bagName == 0){
+                return 'New folder'
+            }
+            return bagName
+        }
+            
         const data = {
             mother_bag_id: current,
-            bag_name: this.state.value
+            bag_name: treathName()
             
         }
-        // console.log(data)
+        // https://ac-file-backend.herokuapp.com/
         await axios.post('http://localhost:3001/createBag', data).then(response => {
             console.log(response.data)
             this.setState({createBag: false})
+            this.setState({value: ''})
         })
     }
 
+    
+
   render() {
+    const {current, motherBag} = this.props
+    const { history } =  this.props
+    function handleBack(){
+        
+    }
+    
     return (
         <Container>
+        {current != 1 && <button onClick={()=> history.push(`/explore/${motherBag}`)}>
+            <BiArrowBack size={25} />
+        </button>}
         <button onClick={()=> this.setState({createBag: !this.state.createBag})}>
             <MdCreateNewFolder size={30} />
         </button>
@@ -47,3 +73,5 @@ export default class componentName extends Component {
     );
   }
 }
+
+export default withRouter(Toolbar)

@@ -28,7 +28,7 @@ export const RightMenu = styled.div`
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     top: ${props => props.positionY}px;
-    left: ${props => props.positionX / 2}px;
+    left: ${props => props.positionX}px;
     
     button{
         width: 100%;
@@ -178,43 +178,4 @@ export const ActionButton = styled.button`
         cursor: pointer;
     }
 `
-export const MoveAreaView = styled.div`
-    width: 500px;
-    height: 500px;
-    position: absolute;
-    background-color: #fff;
-    border: 1px solid #f1f1f1;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    top: ${props => props.positionY}px;
-    left: ${props => props.positionX /2}px; 
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
-    
-        div{
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-        }
 
-    
-`
-
-export const ButtonAction =  styled.button`
-    border: none;
-    height: 40px;
-    border-radius: 5px;
-    background-color: ${props => props.state == 1 ? 'rgba(0, 41, 107,.1)' : 'transparent'};
-    color: #444;
-    padding: 10px;
-    font-weight: bold;
-    width: 150px;
-
-    :hover{
-        background-color: ${props => props.action === "ok" ? 'rgba(0, 41, 107,.1)' : 'rgba(239, 167, 167, .2)'};
-        cursor: pointer;
-    }
-`

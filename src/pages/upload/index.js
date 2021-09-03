@@ -45,7 +45,7 @@ export default class Upload extends Component {
     uploadProcess = (uploadFiles) =>{
         const data = new FormData();
         data.append('file', uploadFiles.f, uploadFiles.fileName)
-        axios.post('http://localhost:3001/upload',data, {
+        axios.post('https://ac-file-backend.herokuapp.com/upload',data, {
             onUploadProgress: e => {
                 const progress = parseInt(Math.round((e.loaded * 100) / e.total))
                 this.updateFile(uploadFiles.id, {

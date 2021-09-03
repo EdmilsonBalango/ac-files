@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Route, Link, Switch, Router } from 'react-router-dom';
 import Explore from '../../pages/explorer';
 import InnerBag from '../../pages/innerBag';
+import Trash from '../../pages/trash';
 import Upload from '../../pages/upload';
 import Header from '../header';
 import Navigator from '../navigation';
+import login from '../login';
 import { Container } from './style';
 
 export default class Board extends Component {
@@ -23,6 +25,7 @@ export default class Board extends Component {
                 <Route exact path={"/"} component={Upload }/>
                 <Route path={'/explore/:ids'} component={Explore} />
                 <Route path={'/folder'} component={InnerBag} />
+                <Route path={'/lixo'} component={Trash} />
               </Switch>
             </main>
           {/* </Router> */}
