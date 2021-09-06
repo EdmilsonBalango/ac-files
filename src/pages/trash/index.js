@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import {useHistory, useParams} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { GlobalShiftsContainer } from '../../global/styles'
-import {BsFillFolderFill, BsArrowsMove} from 'react-icons/bs'
-import {FiEdit, FiDownload} from 'react-icons/fi'
+import { FiDownload } from 'react-icons/fi'
 import {HiFolderOpen} from 'react-icons/hi'
 import { MdDelete } from 'react-icons/md'
-import { Container, RightMenu, Folders, Folder, File, KindFile, DeleteContainer,CenterCard, ActionButton} from './style'
-import Toolbar from '../../components/Toolbar'
+import { Container, RightMenu, Folders, File, KindFile, DeleteContainer,CenterCard, ActionButton } from './style'
 import axios from 'axios'
 import docs from '../../assets/images/extensions/docs.png'
 import sheet from '../../assets/images/extensions/sheets.png'
@@ -17,7 +15,6 @@ import pdf from '../../assets/images/extensions/pdf.png'
 
 
 const Trash = () => {
-    const { ids } =useParams()
     const history = useHistory()
     const [Menu, setMenu] =useState(false)
     const [selected, setSelected] = useState()
@@ -43,7 +40,7 @@ const Trash = () => {
 
     useEffect(()=>{
         GetFiles()
-    },[files])
+    },[])
 
 
    async function handleOpen(){
@@ -57,7 +54,7 @@ const Trash = () => {
                 window.open(file, name)
             })
         }else{
-            history.push(`/explore/${selected.id}`)
+            history.push(`/cloud/explore/${selected.id}`)
             // console.log(selected.id)
         }
     }
@@ -74,7 +71,6 @@ const Trash = () => {
 
     async function handlDelete(){
         const { google_id_file: id, id_file: db_id, id_folder } = selected.details
-        const {kind} = selected
 
         const data ={
             google_id_file: id,
@@ -85,12 +81,10 @@ const Trash = () => {
             console.log(response.data)
         })
         // console.log(data)
-    
     }
 
     async function handleRecoverFile(){
         const { id_file: db_id } = selected.details
-        const {kind} = selected
         
         const data ={
             db_id: db_id,

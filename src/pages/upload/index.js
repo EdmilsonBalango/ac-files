@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import FileList from '../../components/fileList'
 import UploadService from '../../components/uploadService'
 import { GlobalShiftsContainer } from '../../global/styles'
@@ -37,7 +37,7 @@ export default class Upload extends Component {
 
     updateFile = (id, data) => {
         this.setState({uploadedFiles: this.state.uploadedFiles.map( uploadedFile => {
-            return id === uploadedFile.id ? {... uploadedFile, ...data } : uploadedFile
+            return id === uploadedFile.id ? {...uploadedFile, ...data } : uploadedFile
         }) })
 
     }

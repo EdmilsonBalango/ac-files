@@ -59,11 +59,7 @@ export const NewBagName = styled.div`
     }
     
 `
-const buttonColors ={
-    ok: '#000',
-    cancel: '#f48c06'
 
-}
 export const ActionButtons = styled.button`
 
     height: 80%;

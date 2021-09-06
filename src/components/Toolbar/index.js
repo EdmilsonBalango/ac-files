@@ -26,7 +26,7 @@ class Toolbar extends Component {
         let bagName = this.state.value.trim()
 
         function treathName(){
-            if(bagName == 0){
+            if(bagName === 0){
                 return 'New folder'
             }
             return bagName
@@ -50,13 +50,10 @@ class Toolbar extends Component {
   render() {
     const {current, motherBag} = this.props
     const { history } =  this.props
-    function handleBack(){
-        
-    }
     
     return (
         <Container>
-        {current != 1 && <button onClick={()=> history.push(`/explore/${motherBag}`)}>
+        {current !== 1 && <button onClick={()=> history.push(`/explore/${motherBag}`)}>
             <BiArrowBack size={25} />
         </button>}
         <button onClick={()=> this.setState({createBag: !this.state.createBag})}>

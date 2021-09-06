@@ -58,6 +58,31 @@ export const LogCard = styled.div`
 
             }
         }
+        select{
+            border: none;
+            background-color: rgba(0, 0, 0, 0.05);
+            height: 40px;
+            width: 62%;
+            margin-bottom: 10px;
+            font-size: 10pt;
+            border-radius: 5px;
+            padding-left: 10px;
+            font-weight: bold;
+            text-align: center;
+            color: rgba(0, 0, 0, .6);
+            text-align: center;
+            option{
+                border: none;
+                font-size: 10pt;
+                color: #999;
+                font-weight: bold;
+                border-radius: 5px;
+                background-color: transparent;
+                height: 50px;
+                
+
+            }
+        }
         button{
             width: 40%;
             border: none;
@@ -72,10 +97,20 @@ export const LogCard = styled.div`
                 background-color: rgba(0, 41, 107,.2);
                 cursor: pointer;
             }
-
-        
-            
         }
+        div{
+            display: flex;
+            margin-top: 10px;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            p{
+            color: red;
+            font-size: 10pt;
+            margin-right: 10px;
+            }
+        }
+        
     }
 `
 
@@ -83,7 +118,14 @@ export const Form = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    
     button{
         margin-top: 20px;
     }
+`
+
+export const AnimationArea = styled.div`
+    height: 50px;
+    position: absolute;
+    bottom: -10;
 `

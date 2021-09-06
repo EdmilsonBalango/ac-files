@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import {useHistory, useParams} from 'react-router-dom'
-import fileDownload from 'js-file-download'
 import { GlobalShiftsContainer } from '../../global/styles'
 import {BsFillFolderFill, BsArrowsMove} from 'react-icons/bs'
 import {FiEdit, FiDownload} from 'react-icons/fi'
 import {HiFolderOpen} from 'react-icons/hi'
-import {MdDelete, MdCreateNewFolder} from 'react-icons/md'
+import { MdDelete } from 'react-icons/md'
 import { Container, RightMenu, Folders, Folder, File, KindFile, DeleteContainer,CenterCard, ActionButton, MoveAreaView, ButtonAction } from './style'
-import { Link } from 'react-router-dom'
 import Toolbar from '../../components/Toolbar'
 import axios from 'axios'
 import docs from '../../assets/images/extensions/docs.png'
@@ -60,10 +58,8 @@ const Explore = () => {
         }
 
         const response = await axios.post('https://ac-file-backend.herokuapp.com/getbags', data)
-        { response.data && setBags(response.data) }
-
-
-        
+        response.data && setBags(response.data) 
+   
     }
 
     async function GetOwnfolder(){
@@ -109,7 +105,7 @@ const Explore = () => {
                 window.open(file, name)
             })
         }else{
-            history.push(`/explore/${selected.id}`)
+            history.push(`/cloud/explore/${selected.id}`)
             // console.log(selected.id)
         }
     }
@@ -169,7 +165,7 @@ const Explore = () => {
             </div>
             <div>
                 <ButtonAction action={'ok'} state={1}>Mover</ButtonAction>
-                <ButtonAction >Cancelar</ButtonAction>
+                <ButtonAction onClick={()=> setToggleMove(false)}>Cancelar</ButtonAction>
             </div>
         </MoveAreaView>
         
@@ -183,7 +179,7 @@ const Explore = () => {
                 <Folders>
                     {bags && bags.map(f => {
                         return (
-                        <Folder onDoubleClick={()=> history.push(`/explore/${f.id_folder}`)} onContextMenu={(event) => handleMenu(event, f.id_folder, {kind: 'folder', details: f})} key={f.id_folder}>
+                        <Folder onDoubleClick={()=> history.push(`/cloud/explore/${f.id_folder}`)} onContextMenu={(event) => handleMenu(event, f.id_folder, {kind: 'folder', details: f})} key={f.id_folder}>
                             <BsFillFolderFill size={80} color={'rgba(0,0,0,.5)'}/>
                             <strong>{f.folder_name}</strong>
                         </Folder>
@@ -218,7 +214,7 @@ const Explore = () => {
                         <button onClick={()=> DownloadFile()} disabled={true}><FiDownload size={20}/>Download</button>
                         <button onClick={()=> handlDelete()}><MdDelete size={20}/>Apagar</button>
                     </RightMenu>}
-                    {toggleMove && <MoveArea/>}
+                    {/* {toggleMove && <MoveArea/>} */}
 
                 </Folders>
                 

@@ -1,6 +1,6 @@
 import React, {Component}  from "react";
 import Dropzone from "react-dropzone";
-import { DropContainer,DropMessage, FileList } from "./style";
+import { DropContainer,DropMessage } from "./style";
 
 
 

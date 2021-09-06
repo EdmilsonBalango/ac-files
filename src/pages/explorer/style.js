@@ -1,4 +1,4 @@
-import styled,{css} from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
     display: flex;
@@ -207,7 +207,7 @@ export const ButtonAction =  styled.button`
     border: none;
     height: 40px;
     border-radius: 5px;
-    background-color: ${props => props.state == 1 ? 'rgba(0, 41, 107,.1)' : 'transparent'};
+    background-color: ${props => props.state === 1 ? 'rgba(0, 41, 107,.1)' : 'transparent'};
     color: #444;
     padding: 10px;
     font-weight: bold;
