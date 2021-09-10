@@ -12,7 +12,8 @@ import docs from '../../assets/images/extensions/docs.png'
 import sheet from '../../assets/images/extensions/sheets.png'
 import csv from '../../assets/images/extensions/csv.png' 
 import pdf from '../../assets/images/extensions/pdf.png' 
-
+import Dropzone from 'react-dropzone'
+import fileSize from 'filesize'
 
 
 
@@ -172,21 +173,65 @@ const Explore = () => {
         )
     }
 
+
+    function handlefiles({file, bag}){
+       const uploadedFiles = file.map(f =>({
+            f,
+            fileName: f.name,
+            id: f.name,
+            type: f.type,
+            bag, 
+            size: fileSize(f.size, {standard: 'jedec'}),
+            progress: 0,
+            uploaded: false,
+            error: false,
+            url: null
+        }))
+
+        uploadedFiles.forEach(file => uploadFile(file))
+    }
+
+
+    function uploadFile(uploadedFiles){
+        const data = new FormData();
+        data.append('file', uploadedFiles.f, uploadedFiles.fileName)
+        data.append('bag', Number(uploadedFiles.bag))
+        axios.post('https://ac-file-backend.herokuapp.com/uploadinbag',data, {
+            onUploadProgress: e => {
+                // const progress = parseInt(Math.round((e.loaded * 100) / e.total))
+                // this.updateFile(uploadFiles.id, {
+                //     progress,
+                // })
+            }
+        }).then(response =>{
+            console.log(response.data)
+        })
+
+    }
+
     return(
         <GlobalShiftsContainer>
-            <Container onClick={()=>(setMenu(false), setToggleMove(false))} onContextMenu={event=>event.preventDefault()}>
-                <Toolbar current={ids} motherBag={selfBag.mother_folder} />          
-                <Folders>
-                    {bags && bags.map(f => {
+            <Container onClick={()=>{setMenu(false); setToggleMove(false)}} onContextMenu={event=>event.preventDefault()}>
+                
+                <Toolbar current={ids} motherBag={selfBag.mother_folder} />
+                <Dropzone accept="application/*" onDropAccepted={file=>handlefiles({file, bag: Number(ids)})} onDropRejected={info=> console.log(info)}>  
+                {({getRootProps, getInputProps, isDragActive, isDragReject}) => (
+
+                <Folders 
+                    {...getRootProps({className: 'dropezone'})}
+                    isDragActive={isDragActive}
+                    isDragReject={isDragReject}
+                
+                >
+                     
+                     {bags && bags.map(f => {
                         return (
                         <Folder onDoubleClick={()=> history.push(`/cloud/explore/${f.id_folder}`)} onContextMenu={(event) => handleMenu(event, f.id_folder, {kind: 'folder', details: f})} key={f.id_folder}>
                             <BsFillFolderFill size={80} color={'rgba(0,0,0,.5)'}/>
                             <strong>{f.folder_name}</strong>
                         </Folder>
-                    
                         )
                     })}
-
                     {files && files.map(f =>{
                         function treathIcon(){
                             if(f.kind === "application/pdf"){
@@ -214,11 +259,16 @@ const Explore = () => {
                         <button onClick={()=> DownloadFile()} disabled={true}><FiDownload size={20}/>Download</button>
                         <button onClick={()=> handlDelete()}><MdDelete size={20}/>Apagar</button>
                     </RightMenu>}
-                    {/* {toggleMove && <MoveArea/>} */}
 
+
+
+                    
                 </Folders>
-                
-                
+
+                    
+
+                )}
+                </Dropzone>              
             </Container>
             { toggleDelete && <DeleteContainer>
             <CenterCard>

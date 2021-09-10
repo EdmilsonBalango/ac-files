@@ -38,7 +38,7 @@ class Toolbar extends Component {
             
         }
         // https://ac-file-backend.herokuapp.com/
-        await axios.post('http://localhost:3001/createBag', data).then(response => {
+        await axios.post('https://ac-file-backend.herokuapp.com/createBag', data).then(response => {
             console.log(response.data)
             this.setState({createBag: false})
             this.setState({value: ''})
@@ -53,7 +53,7 @@ class Toolbar extends Component {
     
     return (
         <Container>
-        {current !== 1 && <button onClick={()=> history.push(`/explore/${motherBag}`)}>
+        {current !== 1 && <button onClick={()=> history.push(`/cloud/explore/${motherBag}`)}>
             <BiArrowBack size={25} />
         </button>}
         <button onClick={()=> this.setState({createBag: !this.state.createBag})}>

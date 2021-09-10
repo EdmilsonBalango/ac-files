@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const Container = styled.div`
     display: flex;
@@ -49,15 +49,22 @@ export const RightMenu = styled.div`
         text-decoration: none;
     }
 `
-
-export const Folders = styled.div`
+const dragActive = css`
+    background-color: #bde0fe;
+`
+const dragReject =css`
+    background-color: #fff0f3;
+`
+export const Folders = styled.div.attrs({
+    className: 'dropzone'
+})`
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
     /* position: relative; */
     overflow-x: hidden;
-    
+    ${props => props.isDragActive && dragActive };
 
 `
 

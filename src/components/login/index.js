@@ -5,6 +5,7 @@ import { MdError } from 'react-icons/md'
 import logo from '../../assets/images/logo.png'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+import { isAuthenticated } from '../../configs/auth'
 
 const Login =()=> {
 
@@ -15,19 +16,26 @@ const Login =()=> {
     const [errorLogin, setLoginerror] =  useState(false)
     const history = useHistory()
     const element = useRef(null)
+
+
     async function verifyCode(){
         const data = {
             code: userCode,
             user_id: Number(userId)
         }
         setIsLoading(true)
-        await axios.post('http://localhost:3001/login', data).then(response => {
+        await axios.post('https://ac-file-backend.herokuapp.com/login', data).then(response => {
             
             if(response.data.length > 0){
                 const {id_user} = response.data[0]
                 setLoginerror(false)
-                localStorage.setItem('@user_id', id_user)
-                history.push('/cloud')
+                try{
+                    localStorage.setItem('@user_id', id_user)
+                    history.push('/cloud')
+                }catch(err){
+                    console.log(err)
+                }
+
                 
             }else {
                 setLoginerror(true)
@@ -39,13 +47,16 @@ const Login =()=> {
     } 
 
     async function getUsers(){
-        axios.get('http://localhost:3001/users').then(response => {
+        axios.get('https://ac-file-backend.herokuapp.com/users').then(response => {
             setUsers(response.data)
         })
     }
 
     useEffect(()=>{
         getUsers()
+        // if(isAuthenticated){
+        //     history.push('/cloud')
+        // }
 
         Lottie.loadAnimation({
             container: element.current,
