@@ -6,6 +6,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 0 50px;
+    position: relative;
 
 `
 export const Logo = styled.img`
@@ -55,22 +56,53 @@ export const Filter = styled.div`
     position: absolute;
     width: 50vw;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    min-height: 200px;
+    min-height: 20vh;
+    max-height: 30vh;
     background-color: #fff;
     border-radius: 10px;
     padding: 10px;
     top: 7vh;
+    left: 25%;
+    z-index:1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 `
 export const ListFilter = styled.div`
     display: flex;
     flex-direction: row;
+    min-height: 50px;
+    padding: 20px;
+    flex-direction: column;
+
+        button{
+            background-color: rgba(0,0,0,.03);
+            height: 60px;
+            width: 100%;
+            border-radius: 5px;
+        }
+
     
 
-    button{
-        height: 50px;
-        width: 50px;
-    }
+`
 
+export const OptionsList = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    button{
+        height: 8vh;
+        min-width: 10%;
+        max-width: 12%;
+        background-color: rgba(0,0,0,.02);
+        border-radius: 20%;
+
+        img{
+            width: 70%;
+        }
+    }
 `
 
 export const Profile = styled.a`

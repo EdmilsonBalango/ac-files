@@ -48,13 +48,13 @@ class Toolbar extends Component {
     
 
   render() {
-    const {current, motherBag} = this.props
+    const {current, motherBag, folderName} = this.props
     const { history } =  this.props
-    
+    // console.log(current)
     return (
         <Container>
-        {current !== 1 && <button onClick={()=> history.push(`/cloud/explore/${motherBag}`)}>
-            <BiArrowBack size={25} />
+        {Number(current) === 1 ? null : <button onClick={()=> history.push(`/cloud/explore/${motherBag}`)}>
+            <BiArrowBack size={25} /> <strong>{folderName}</strong>
         </button>}
         <button onClick={()=> this.setState({createBag: !this.state.createBag})}>
             <MdCreateNewFolder size={30} />

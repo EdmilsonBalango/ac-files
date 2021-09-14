@@ -42,6 +42,8 @@ const Explore = () => {
 
         const data = {
             folder_id: ids,
+            user: localStorage.getItem('@user_id')
+
         }
 
         const response = await axios.post('https://ac-file-backend.herokuapp.com/getfiles', data)
@@ -55,17 +57,19 @@ const Explore = () => {
     async function GetFolders(){
 
         const data = {
-            folder_id: ids
+            folder_id: ids,
+            user: localStorage.getItem('@user_id')
         }
 
-        const response = await axios.post('https://ac-file-backend.herokuapp.com/getbags', data)
-        response.data && setBags(response.data) 
+        const response = await axios.post('http://localhost:3001/getbags', data)
+        response.data && setBags(response.data)
    
     }
 
     async function GetOwnfolder(){
         const data = {
-            folder_id: ids
+            folder_id: ids,
+            user: localStorage.getItem('@user_id')
         }
         const responsetoSelf =  await axios.post('https://ac-file-backend.herokuapp.com/selfbag', data)
         setSelfBag(responsetoSelf.data[0])
@@ -196,7 +200,7 @@ const Explore = () => {
         const data = new FormData();
         data.append('file', uploadedFiles.f, uploadedFiles.fileName)
         data.append('bag', Number(uploadedFiles.bag))
-        axios.post('https://ac-file-backend.herokuapp.com/uploadinbag',data, {
+        axios.post('http://localhost:3001/uploadinbag',data, {
             onUploadProgress: e => {
                 // const progress = parseInt(Math.round((e.loaded * 100) / e.total))
                 // this.updateFile(uploadFiles.id, {
@@ -213,7 +217,7 @@ const Explore = () => {
         <GlobalShiftsContainer>
             <Container onClick={()=>{setMenu(false); setToggleMove(false)}} onContextMenu={event=>event.preventDefault()}>
                 
-                <Toolbar current={ids} motherBag={selfBag.mother_folder} />
+                <Toolbar current={ids} motherBag={selfBag.mother_folder} folderName={selfBag.folder_name} />
                 <Dropzone accept="application/*" onDropAccepted={file=>handlefiles({file, bag: Number(ids)})} onDropRejected={info=> console.log(info)}>  
                 {({getRootProps, getInputProps, isDragActive, isDragReject}) => (
 
@@ -256,7 +260,7 @@ const Explore = () => {
                         <button onClick={()=> handleOpen()} ><HiFolderOpen size={20}/>Abrir</button>
                         <button onClick={()=> console.log('f')}><FiEdit size={20}/>Editar</button>
                         <button onClick={()=> setToggleMove(true)}><BsArrowsMove size={20}/>Mover</button>
-                        <button onClick={()=> DownloadFile()} disabled={true}><FiDownload size={20}/>Download</button>
+                        <button onClick={()=> DownloadFile()}><FiDownload size={20}/>Download</button>
                         <button onClick={()=> handlDelete()}><MdDelete size={20}/>Apagar</button>
                     </RightMenu>}
 

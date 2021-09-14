@@ -4,7 +4,7 @@ import { GlobalShiftsContainer } from '../../global/styles'
 import { FiDownload } from 'react-icons/fi'
 import {HiFolderOpen} from 'react-icons/hi'
 import { MdDelete } from 'react-icons/md'
-import { Container, RightMenu, Folders, File, KindFile, DeleteContainer,CenterCard, ActionButton } from './style'
+import { Container, RightMenu, Folders, File, KindFile } from './style'
 import axios from 'axios'
 import docs from '../../assets/images/extensions/docs.png'
 import sheet from '../../assets/images/extensions/sheets.png'
@@ -15,12 +15,12 @@ import pdf from '../../assets/images/extensions/pdf.png'
 
 
 const Trash = () => {
+
     const history = useHistory()
     const [Menu, setMenu] =useState(false)
     const [selected, setSelected] = useState()
     const [position, setPosition] = useState({x:0, y:0})
     const [files, setFiles] = useState([])
-    const [toggleDelete, setToggleDelete] = useState(false)
 
     function handleMenu(event, id, kind, ){
         event.preventDefault()
@@ -55,7 +55,6 @@ const Trash = () => {
             })
         }else{
             history.push(`/cloud/explore/${selected.id}`)
-            // console.log(selected.id)
         }
     }
 
@@ -80,7 +79,6 @@ const Trash = () => {
         await axios.post('https://ac-file-backend.herokuapp.com/deletefilepermanently', data).then(response => {
             console.log(response.data)
         })
-        // console.log(data)
     }
 
     async function handleRecoverFile(){
@@ -124,17 +122,9 @@ const Trash = () => {
                         <button onClick={()=> handleRecoverFile()}><FiDownload size={20}/>Recuperar</button>
                         <button onClick={()=> handlDelete()}><MdDelete size={20}/>Apagar</button>
                     </RightMenu>}
+                    {!!files && <div style={{display: 'flex', flex: 1, justifyContent: 'center', alignItems: 'center'}}><h1 style={{color: '#666'}}>Nada no lixo</h1></div>}
                 </Folders>
             </Container>
-            { toggleDelete && <DeleteContainer>
-            <CenterCard>
-                <input placeholder={'Para confirmar escreva "APAGAR"'} />
-                <div>
-                    <ActionButton action={'ok'} >Apagar</ActionButton>
-                    <ActionButton action={'cancel'}>Cancelar</ActionButton>
-                </div>
-            </CenterCard>
-        </DeleteContainer>}
         </GlobalShiftsContainer>
     )
 }
