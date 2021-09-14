@@ -61,7 +61,7 @@ const Explore = () => {
             user: localStorage.getItem('@user_id')
         }
 
-        const response = await axios.post('http://localhost:3001/getbags', data)
+        const response = await axios.post('https://ac-file-backend.herokuapp.com/getbags', data)
         response.data && setBags(response.data)
    
     }
@@ -200,7 +200,7 @@ const Explore = () => {
         const data = new FormData();
         data.append('file', uploadedFiles.f, uploadedFiles.fileName)
         data.append('bag', Number(uploadedFiles.bag))
-        axios.post('http://localhost:3001/uploadinbag',data, {
+        axios.post('https://ac-file-backend.herokuapp.com/uploadinbag',data, {
             onUploadProgress: e => {
                 // const progress = parseInt(Math.round((e.loaded * 100) / e.total))
                 // this.updateFile(uploadFiles.id, {

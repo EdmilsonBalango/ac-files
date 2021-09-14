@@ -26,7 +26,7 @@ const Header= () => {
         user: localStorage.getItem('@user_id')
       }
 
-      axios.post('http://localhost:3001/search', data).then(response =>{
+      axios.post('https://ac-file-backend.herokuapp.com/search', data).then(response =>{
         setResults(response.data)
       }) 
     }
